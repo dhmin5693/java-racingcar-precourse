@@ -32,6 +32,14 @@ public class Car {
         tireMarks.append(MARK);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getScore() {
+        return tireMarks.length();
+    }
+
     @Override
     public String toString() {
         return name + SEPARATOR + tireMarks.toString();

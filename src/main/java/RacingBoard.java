@@ -39,4 +39,25 @@ public class RacingBoard {
 
         return result;
     }
+
+    public String getWinnerName() {
+
+        int maxScore = 0;
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (maxScore < car.getScore()) {
+                winners.clear();
+                winners.add(car.getName());
+                maxScore = car.getScore();
+                continue;
+            }
+
+            if (maxScore == car.getScore()) {
+                winners.add(car.getName());
+            }
+        }
+
+        return String.join(", ", winners);
+    }
 }
