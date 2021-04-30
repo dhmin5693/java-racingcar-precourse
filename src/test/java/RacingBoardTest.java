@@ -26,7 +26,7 @@ class RacingBoardTest {
         };
     }
 
-    private List<Car> createCars(int size) {
+    private Cars createCars(int size) {
 
         List<Car> cars = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
@@ -36,7 +36,8 @@ class RacingBoardTest {
             cars.add(new Car(sb.toString()));
             sb.deleteCharAt(0);
         }
-        return cars;
+
+        return new Cars(cars);
     }
 
     @DisplayName("숫자 생성 결과가 4 이상인 차량만 전진 가능 - 0번 시도")
@@ -93,7 +94,7 @@ class RacingBoardTest {
         racingBoard.race();
 
         String expected = "D";
-        String actual = racingBoard.getWinnerName();
+        String actual = racingBoard.getWinnerNames();
         assertEquals(expected, actual);
     }
 
@@ -106,7 +107,7 @@ class RacingBoardTest {
         racingBoard.race();
 
         String expected = "A, D";
-        String actual = racingBoard.getWinnerName();
+        String actual = racingBoard.getWinnerNames();
         assertEquals(expected, actual);
     }
 }
