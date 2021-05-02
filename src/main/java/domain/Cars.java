@@ -29,7 +29,7 @@ public class Cars {
         return status;
     }
 
-    public String getWinnerNames() {
+    public String getWinners() {
 
         int maxScore = getMaxScore();
         List<String> winners = new ArrayList<>();

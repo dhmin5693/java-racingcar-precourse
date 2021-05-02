@@ -100,7 +100,7 @@ class CarsTest {
         cars.moveAll();
 
         String expected = "D";
-        String actual = cars.getWinnerNames();
+        String actual = cars.getWinners();
         assertEquals(expected, actual);
     }
 
@@ -113,7 +113,7 @@ class CarsTest {
         cars.moveAll();
 
         String expected = "A, D";
-        String actual = cars.getWinnerNames();
+        String actual = cars.getWinners();
         assertEquals(expected, actual);
     }
 }
