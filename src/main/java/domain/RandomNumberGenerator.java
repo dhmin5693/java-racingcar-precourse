@@ -4,14 +4,10 @@ import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
 
-    private final Random random;
-
-    public RandomNumberGenerator() {
-        random = new Random();
-    }
+    private final static Random RANDOM = new Random();
 
     @Override
     public int nextNumber() {
-        return random.nextInt(BOUND);
+        return RANDOM.nextInt(BOUND);
     }
 }

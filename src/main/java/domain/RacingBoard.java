@@ -6,7 +6,7 @@ import ui.IOManager;
 
 public class RacingBoard {
 
-    public static final String NAME_DELIMITER = ",";
+    private static final String NAME_DELIMITER = ",";
 
     private final IOManager ioManager;
 
