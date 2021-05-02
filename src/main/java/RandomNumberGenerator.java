@@ -2,8 +2,6 @@ import java.util.Random;
 
 public class RandomNumberGenerator implements NumberGenerator {
 
-    private static final int BOUND = 9;
-
     private final Random random;
 
     public RandomNumberGenerator() {

@@ -7,13 +7,19 @@ public class Car {
 
     private final String name;
     private final StringBuilder tireMarks;
+    private final Engine engine;
 
     public Car(String name) {
+        this(name, Engine.defaultEngine());
+    }
+
+    public Car(String name, Engine engine) {
         validateNotNullRule(name);
         this.name = name.trim();
         validateCarNameRule(this.name);
 
         tireMarks = new StringBuilder();
+        this.engine = engine;
     }
 
     private void validateNotNullRule(String name) {
@@ -29,7 +35,9 @@ public class Car {
     }
 
     public void move() {
-        tireMarks.append(MARK);
+        if (engine.isEnoughPower()) {
+            tireMarks.append(MARK);
+        }
     }
 
     public String getName() {

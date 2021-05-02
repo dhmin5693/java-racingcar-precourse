@@ -40,7 +40,8 @@ class CarTest {
     @ParameterizedTest
     void test03(int moveCount) {
 
-        Car car = new Car("name");
+        Engine engine = new Engine(new CarMoveRule(), () -> 5);
+        Car car = new Car("name", engine);
 
         StringBuilder marks = new StringBuilder();
         for (int i = 0; i < moveCount; i++) {

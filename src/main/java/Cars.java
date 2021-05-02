@@ -4,28 +4,16 @@ import java.util.List;
 
 public class Cars {
 
-    private static final int REQUIRED_MINIMUM_NUMBER_TO_MOVE = 4;
-
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
     }
 
-    public void moveAll(NumberGenerator numberGenerator) {
+    public void moveAll() {
         for (Car car : cars) {
-            moveCar(car, numberGenerator);
-        }
-    }
-
-    private void moveCar(Car car, NumberGenerator numberGenerator) {
-        if (isMovable(numberGenerator)) {
             car.move();
         }
-    }
-
-    private boolean isMovable(NumberGenerator numberGenerator) {
-        return numberGenerator.nextNumber() >= REQUIRED_MINIMUM_NUMBER_TO_MOVE;
     }
 
     public List<String> getCarsStatus() {

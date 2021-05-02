@@ -9,11 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RacingBoardTest {
 
-    private NumberGenerator numberGenerator;
+    private Engine engine;
 
     @BeforeEach
     void setUp() {
-        numberGenerator = new NumberGenerator() {
+        // 1, 3, 5, 7, 9, 1, 3, ...
+        NumberGenerator numberGenerator = new NumberGenerator() {
 
             private int count = -1;
 
@@ -24,8 +25,11 @@ class RacingBoardTest {
                 return count % 10;
             }
         };
+
+        engine = new Engine(new CarMoveRule(), numberGenerator);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private Cars createCars(int size) {
 
         List<Car> cars = new ArrayList<>();
@@ -33,7 +37,7 @@ class RacingBoardTest {
 
         for (int i = 0; i < size; i++) {
             sb.append((char)(i + 'A'));
-            cars.add(new Car(sb.toString()));
+            cars.add(new Car(sb.toString(), engine));
             sb.deleteCharAt(0);
         }
 
@@ -43,7 +47,7 @@ class RacingBoardTest {
     @DisplayName("숫자 생성 결과가 4 이상인 차량만 전진 가능 - 0번 시도")
     @Test
     void raceTest00() {
-        RacingBoard racingBoard = new RacingBoard(createCars(4), numberGenerator);
+        RacingBoard racingBoard = new RacingBoard(createCars(4));
 
         List<String> expected = Arrays.asList("A: ", "B: ", "C: ", "D: ");
         List<String> actual = racingBoard.getResult();
@@ -53,7 +57,7 @@ class RacingBoardTest {
     @DisplayName("숫자 생성 결과가 4 이상인 차량만 전진 가능 - 1번 시도")
     @Test
     void raceTest01() {
-        RacingBoard racingBoard = new RacingBoard(createCars(4), numberGenerator);
+        RacingBoard racingBoard = new RacingBoard(createCars(4));
         racingBoard.race();
 
         List<String> expected = Arrays.asList("A: ", "B: ", "C: -", "D: -");
@@ -64,7 +68,7 @@ class RacingBoardTest {
     @DisplayName("숫자 생성 결과가 4 이상인 차량만 전진 가능 - 2번 시도")
     @Test
     void raceTest02() {
-        RacingBoard racingBoard = new RacingBoard(createCars(4), numberGenerator);
+        RacingBoard racingBoard = new RacingBoard(createCars(4));
         racingBoard.race();
         racingBoard.race();
 
@@ -76,7 +80,7 @@ class RacingBoardTest {
     @DisplayName("숫자 생성 결과가 4 이상인 차량만 전진 가능 - 3번 시도")
     @Test
     void raceTest03() {
-        RacingBoard racingBoard = new RacingBoard(createCars(4), numberGenerator);
+        RacingBoard racingBoard = new RacingBoard(createCars(4));
         racingBoard.race();
         racingBoard.race();
         racingBoard.race();
@@ -89,7 +93,7 @@ class RacingBoardTest {
     @DisplayName("가장 많이 전진한 차가 우승 - 2번 경주")
     @Test
     void winnerTest01() {
-        RacingBoard racingBoard = new RacingBoard(createCars(4), numberGenerator);
+        RacingBoard racingBoard = new RacingBoard(createCars(4));
         racingBoard.race();
         racingBoard.race();
 
@@ -101,7 +105,7 @@ class RacingBoardTest {
     @DisplayName("가장 많이 전진한 차가 우승 - 3번 경주")
     @Test
     void winnerTest02() {
-        RacingBoard racingBoard = new RacingBoard(createCars(4), numberGenerator);
+        RacingBoard racingBoard = new RacingBoard(createCars(4));
         racingBoard.race();
         racingBoard.race();
         racingBoard.race();

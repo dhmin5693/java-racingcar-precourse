@@ -3,15 +3,13 @@ import java.util.List;
 public class RacingBoard {
 
     private final Cars cars;
-    private final NumberGenerator numberGenerator;
 
-    public RacingBoard(Cars cars, NumberGenerator numberGenerator) {
+    public RacingBoard(Cars cars) {
         this.cars = cars;
-        this.numberGenerator = numberGenerator;
     }
 
     public void race() {
-        cars.moveAll(numberGenerator);
+        cars.moveAll();
     }
 
     public List<String> getResult() {
