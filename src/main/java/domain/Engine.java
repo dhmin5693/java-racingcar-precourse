@@ -1,3 +1,5 @@
+package domain;
+
 public class Engine {
 
     private final MoveRule moveRule;

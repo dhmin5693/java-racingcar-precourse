@@ -1,3 +1,5 @@
+package domain;
+
 public class CarMoveRule implements MoveRule {
 
     private static final int REQUIRED_MINIMUM_NUMBER_TO_MOVE = 4;
